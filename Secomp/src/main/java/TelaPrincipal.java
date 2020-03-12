@@ -21,21 +21,32 @@ import javax.swing.JTextField;
 public class TelaPrincipal extends javax.swing.JFrame {
 
    
-    ArrayList listaAlunos = new ArrayList();
+    ArrayList<Aluno> listaAlunos = new ArrayList<>();
     
 
     /**
      * Creates new form TelaPrincipal
      */
+
+
+
     public TelaPrincipal() {
         
-        JFrame tela = new TelaPrincipal("Tela");
+        JFrame tela = new JFrame("Tela Principal");
         tela.setVisible(true);
         initComponents();
     }
-        
-        
 
+    private void adicionarAluno(String nome){
+        for(Aluno aluno : listaAlunos){
+            if(aluno.getName().equals(nome)){
+                System.out.println("Aluno ja cadastrado");
+            }else{
+                listaAlunos.add(aluno);
+            }
+        }
+    }
+        
     TelaPrincipal(String tela) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -47,6 +58,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    
+    
+   
+    
+    
+    
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -185,24 +202,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_TextFieldAtividadeActionPerformed
 
     private void buttonAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAlunoActionPerformed
-        String compara = textFieldAluno.getText();
-        for (int i = 0; i <= listaAlunos.length; i++) {
-            if (compara == listaAlunos[i]) {
-                
-            }
-            
-        }
+         adicionarAluno("aaa");
+         System.out.println("botao correto");
     }//GEN-LAST:event_buttonAlunoActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -220,17 +229,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
                 new TelaPrincipal().setVisible(true);
                 JLabel labelAtividade = new JLabel();
                 JLabel labelNomeAluno = new JLabel();
                 JTextField textFieldAluno = new JTextField();
                 JTextField textFieldAtividade = new JTextField();
-                
-                
             }
         });
     }

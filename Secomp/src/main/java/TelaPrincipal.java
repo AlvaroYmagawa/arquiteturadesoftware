@@ -19,17 +19,8 @@ import javax.swing.JTextField;
  * @author Raquel
  */
 public class TelaPrincipal extends javax.swing.JFrame {
-
-   
     ArrayList<Aluno> listaAlunos = new ArrayList<>();
     
-
-    /**
-     * Creates new form TelaPrincipal
-     */
-
-
-
     public TelaPrincipal() {
         
         JFrame tela = new JFrame("Tela Principal");
@@ -37,13 +28,26 @@ public class TelaPrincipal extends javax.swing.JFrame {
         initComponents();
     }
 
-    private void adicionarAluno(String nome){
+    // FUNÇÕES
+    private void adicionarAluno(String nomeAluno){
+        Aluno novoAluno = new Aluno(nomeAluno);
+
         for(Aluno aluno : listaAlunos){
-            if(aluno.getName().equals(nome)){
-                System.out.println("Aluno ja cadastrado");
-            }else{
-                listaAlunos.add(aluno);
+            if(aluno.getName().equals(nomeAluno)){
+                System.out.println("Aluno já cadastrado!");
+                return;
             }
+        }
+
+        listaAlunos.add(novoAluno);
+        System.out.println(novoAluno.getName()+" cadastrado com sucesso!");
+    }
+
+    private void imprimeLista(){
+        System.out.println("---IMPRIMINDO LISTA---");
+
+        for(Aluno aluno : listaAlunos){
+            System.out.println(aluno.getName());
         }
     }
         
@@ -58,11 +62,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    
-    
-   
-    
-    
     
     private void initComponents() {
 
@@ -113,6 +112,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         buttonAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonAlunoActionPerformed(evt);
+            }
+        });
+
+        buttonImprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonImprimirActionPerformed(evt);
             }
         });
 
@@ -202,9 +207,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_TextFieldAtividadeActionPerformed
 
     private void buttonAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAlunoActionPerformed
-         adicionarAluno("aaa");
-         System.out.println("botao correto");
+         adicionarAluno(textFieldAluno.getText());
     }//GEN-LAST:event_buttonAlunoActionPerformed
+
+    private void buttonImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAlunoActionPerformed
+        imprimeLista();
+   }//GEN-LAST:event_buttonAlunoActionPerformed
 
     /**
      * @param args the command line arguments
